@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Helpers.fs" />
+    <Content Include="inputs\1.txt" />
+    <Content Include="inputs\1-ex.txt" />
+    <None Include="1.fsx" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
