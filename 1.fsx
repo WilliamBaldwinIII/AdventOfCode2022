@@ -1,39 +1,38 @@
 ﻿#load "Helpers.fs"
 
-let readFile() = Helpers.readFile @".\inputs\1.txt"
+open System
 
-let lines = readFile()
+let fileName = $"1"
 
-let nums =
-    lines
-    |> List.map int
+let readFile () =
+    Helpers.readFile $".\inputs\{fileName}.txt"
 
-/// Get amount of times the number increased from one index to the next in the given list.
-let getNumberOfIncreases (nums: int list) =
-    let increases = seq {
-        for i in 1 .. nums.Length - 1 do
-            yield nums[i] > nums[i-1]
-    }
+let lines = readFile ()
 
-    increases
-    |> Seq.filter id
-    |> Seq.length
+let rec processFn (allElvesList: string list list) (currentElf: string list) (input: string list) =
+    match input with
+    | [] -> currentElf :: allElvesList
+    | x :: xs ->
+        if x |> String.IsNullOrWhiteSpace then
+            processFn (currentElf :: allElvesList) [] xs
+        else
+            let currentElf = x :: currentElf
+            processFn allElvesList currentElf xs
 
-let answer1 =
-    nums
-    |> getNumberOfIncreases
+let elfTotalsRaw = lines |> processFn [] []
+lines |> List.fold
 
-printfn $"Answer 1: {answer1}"
+let elfTotals = elfTotalsRaw |> List.map (List.sumBy int)
 
-/// Get sums of sliding window of three indices.
-let threeSlidingWindow = seq {
-    for i in 2 .. nums.Length - 1 do
-        yield nums[i - 2] + nums[i - 1] + nums[i]
-}
+printfn "Elf total calories: %A" elfTotals
+printfn $"Max calorie count: {elfTotals |> List.max}"
 
-let answer2 =
-    threeSlidingWindow
-    |> Seq.toList
-    |> getNumberOfIncreases
 
-printfn $"Answer 2: {answer2}"
+let topThreeCalories =
+    elfTotals
+    |> List.sortByDescending id
+    |> List.take 3
+    |> List.sum
+
+
+printfn "Top 3 sum: %d" topThreeCalories
