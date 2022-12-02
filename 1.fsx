@@ -20,7 +20,6 @@ let rec processFn (allElvesList: string list list) (currentElf: string list) (in
             processFn allElvesList currentElf xs
 
 let elfTotalsRaw = lines |> processFn [] []
-lines |> List.fold
 
 let elfTotals = elfTotalsRaw |> List.map (List.sumBy int)
 
