@@ -2,10 +2,9 @@
 
 open System
 
-let fileName = $"2"
+let fileName = $"2-ex"
 
 let lines = Helpers.readNumFile fileName
-
 
 type Shape =
     | Rock
