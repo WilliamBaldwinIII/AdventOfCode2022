@@ -58,12 +58,12 @@ let addLineToStacks (stackMap: Map<int, string list>) (currentLineCrateList: Map
         match currentLineCrateList.TryFind i with
         | None -> stackMap'
         | Some crate ->
-            let crate' = [ crate ]
-
             match stackMap'.TryFind i with
-            | None -> stackMap'.Add(i, crate')
-            | Some crateList -> stackMap'.Add(i, crateList @ crate')
+            | None -> stackMap'.Add(i, [ crate ])
+            | Some crateList -> stackMap'.Add(i, crate :: crateList)
 
     indexValues |> Seq.fold lineFold stackMap
 
 let crateStacks = parsedCrates |> Seq.fold addLineToStacks Map.empty
+
+let convertToMapIndex puzzleIndex = indexMap |> Map.find puzzleIndex
