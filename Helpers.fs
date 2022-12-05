@@ -47,3 +47,5 @@ module Array2D =
 module String =
     let split (delimeter: string) (str: string) =
         str.Split(delimeter, StringSplitOptions.RemoveEmptyEntries)
+
+    let fromCharArray (cArr: char array) = new string (cArr)
