@@ -49,3 +49,8 @@ module String =
         str.Split(delimeter, StringSplitOptions.RemoveEmptyEntries)
 
     let fromCharArray (cArr: char array) = new string (cArr)
+
+    let trim (s: string) =
+        match s with
+        | null -> null
+        | _ -> s.Trim()

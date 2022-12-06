@@ -6,18 +6,16 @@ open System.Text.RegularExpressions
 open Helpers
 
 
-let fileName = $"5-ex"
+let fileName = $"5"
 
-let lines =
-    FileHelpers.readNumFile fileName
-    |> List.map (fun s -> s.Trim())
+let lines = FileHelpers.readNumFile fileName
 
 let countIndex =
     lines
-    |> List.findIndex (fun i -> i.StartsWith("1"))
+    |> List.findIndex (fun i -> i.StartsWith(" 1"))
 
 let stacks, moves' = lines |> List.splitAt (countIndex + 1)
-let moves = moves' |> List.tail
+let moves = moves' |> List.tail |> List.map String.trim
 
 let stacksRev = stacks |> List.rev
 
@@ -26,13 +24,7 @@ let indexesLine, crateLines =
     | indexesLine :: crateLines -> indexesLine, crateLines
     | _ -> failwith "Error! Something's wrong with the parsed stack lines"
 
-/// Map indexes to their programmatic indexes
-let indexMap =
-    indexesLine
-    |> String.split " "
-    |> Seq.map int
-    |> Seq.mapi (fun i index -> index, i)
-    |> Map.ofSeq
+let indexes = indexesLine |> String.split " " |> Seq.map int
 
 let crateRegex = Regex(@"\[([A-Z])\]", RegexOptions.Compiled)
 
@@ -48,12 +40,11 @@ let parseLine (line: string) =
     |> Seq.map String.fromCharArray
     |> Seq.map parseCrate
     |> Seq.mapi (fun i crate -> i, crate)
-    |> Seq.choose (fun (i, crate) -> crate |> Option.map (fun c -> i, c))
+    |> Seq.choose (fun (i, crate) -> crate |> Option.map (fun c -> i + 1, c))
     |> Map.ofSeq
 
 let parsedCrates = crateLines |> Seq.map parseLine
 
-let indexValues = indexMap.Values |> seq
 
 let addLineToStacks (stackMap: Map<int, string list>) (currentLineCrateList: Map<int, string>) =
     let lineFold (stackMap': Map<int, string list>) i =
@@ -64,10 +55,9 @@ let addLineToStacks (stackMap: Map<int, string list>) (currentLineCrateList: Map
             | None -> stackMap'.Add(i, [ crate ])
             | Some crateList -> stackMap'.Add(i, crate :: crateList)
 
-    indexValues |> Seq.fold lineFold stackMap
+    indexes |> Seq.fold lineFold stackMap
 
 
-let convertToMapIndex puzzleIndex = indexMap |> Map.find puzzleIndex
 
 let moveRegex = Regex(@"move (\d+) from (\d+) to (\d+)", RegexOptions.Compiled)
 
@@ -77,11 +67,8 @@ let parseMove (line: string) =
 
     let moveMatchGroups = moveRegex.Match(line).Groups
     let amountToMove = moveMatchGroups[1].Value |> int
-    let fromStackIndex = moveMatchGroups[2].Value |> int
-    let toStackIndex = moveMatchGroups[3].Value |> int
-
-    let fromStack = convertToMapIndex fromStackIndex
-    let toStack = convertToMapIndex toStackIndex
+    let fromStack = moveMatchGroups[2].Value |> int
+    let toStack = moveMatchGroups[3].Value |> int
 
     amountToMove, fromStack, toStack
 
@@ -106,3 +93,9 @@ printfn $"Moves: {moves}"
 let afterMoveCrateStacks = moves |> Seq.fold makeMove initialCrateStacks
 
 printfn $"After Moves: %A{afterMoveCrateStacks}"
+
+let topCrates =
+    afterMoveCrateStacks
+    |> Map.values
+    |> Seq.map List.head
+    |> String.concat ""
