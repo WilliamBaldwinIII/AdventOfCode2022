@@ -72,15 +72,17 @@ let parseMove (line: string) =
 
     amountToMove, fromStack, toStack
 
-let makeMove (crateStacks: Map<int, string list>) (line: string) =
+let makeMove reverse (crateStacks: Map<int, string list>) (line: string) =
     let amountToMove, fromStackNum, toStackNum = parseMove line
 
     let fromStack = crateStacks[fromStackNum]
     let toStack = crateStacks[toStackNum]
 
+    let revFn = if reverse then List.rev else id
+
     let cratesToAdd = fromStack |> List.take amountToMove
     let fromStack' = fromStack |> List.skip amountToMove
-    let toStack' = (cratesToAdd |> List.rev) @ toStack
+    let toStack' = (cratesToAdd |> revFn) @ toStack
 
     crateStacks
     |> Map.add fromStackNum fromStack'
@@ -90,12 +92,26 @@ let makeMove (crateStacks: Map<int, string list>) (line: string) =
 let initialCrateStacks = parsedCrates |> Seq.fold addLineToStacks Map.empty
 
 printfn $"Moves: {moves}"
-let afterMoveCrateStacks = moves |> Seq.fold makeMove initialCrateStacks
+
+let afterMoveCrateStacks =
+    moves
+    |> Seq.fold (makeMove true) initialCrateStacks
 
 printfn $"After Moves: %A{afterMoveCrateStacks}"
 
 let topCrates =
     afterMoveCrateStacks
+    |> Map.values
+    |> Seq.map List.head
+    |> String.concat ""
+
+
+let afterMoveCrateStacks' =
+    moves
+    |> Seq.fold (makeMove false) initialCrateStacks
+
+let topCrates' =
+    afterMoveCrateStacks'
     |> Map.values
     |> Seq.map List.head
     |> String.concat ""
