@@ -63,3 +63,62 @@ let allVisible =
     |> Array2D.flatten
     |> Seq.filter id
     |> Seq.length
+
+
+let getVisibilityScore (grid: int [,]) (x, y) =
+    let currentElement = grid[x, y]
+
+    let getSection columnOrRow curIndex =
+        let mapped = columnOrRow |> Seq.mapi (fun i e -> (i, e))
+
+        let filter fn =
+            mapped
+            |> Seq.filter (fun (i, _) -> i |> fn)
+            |> Seq.map snd
+            |> Seq.toList
+
+        let isBefore i = i < curIndex
+        let isAfter i = i < curIndex
+
+        let before = filter isBefore
+        let after = filter isAfter
+
+        [ before; after ]
+
+
+
+    let column = grid |> Helpers.Array2D.getColumn y
+    let row = grid |> Helpers.Array2D.getRow x
+
+    let columnSections = getSection column y
+    let rowSections = getSection row x
+
+    let sumSection =
+        List.rev
+        >> function
+            | [] -> 0
+            | xs ->
+                let numTrees =
+                    xs
+                    |> Seq.takeWhile (fun e -> e < currentElement)
+                    |> Seq.length
+
+                // If our view goes all the way to the edge, the number of trees
+                // is what we counted. Otherwise, add 1 to offset the taller tree we ran into
+                if xs.Length = numTrees then
+                    numTrees
+                else
+                    numTrees + 1
+
+    [ columnSections; rowSections ]
+    |> List.concat
+    |> List.map sumSection
+    |> List.product
+
+let getVisibilityScore' x y _cur = getVisibilityScore mainGrid (x, y)
+
+let allScores =
+    mainGrid
+    |> Array2D.mapi getVisibilityScore'
+    |> Array2D.flatten
+    |> Seq.max

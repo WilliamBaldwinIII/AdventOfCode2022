@@ -54,3 +54,7 @@ module String =
         match s with
         | null -> null
         | _ -> s.Trim()
+
+
+module List =
+    let product = List.fold (fun total cur -> total * cur) 1
