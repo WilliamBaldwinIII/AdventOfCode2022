@@ -6,7 +6,7 @@ open System.Text.RegularExpressions
 open Helpers
 
 
-let fileName = $"8-ex"
+let fileName = $"8"
 
 let fileLines = FileHelpers.readNumFile fileName
 
@@ -64,7 +64,7 @@ let allVisible =
     |> Seq.filter id
     |> Seq.length
 
-
+// -------------- Part 2 -------------- 
 let getVisibilityScore (grid: int [,]) (x, y) =
     let currentElement = grid[x, y]
 
@@ -78,42 +78,41 @@ let getVisibilityScore (grid: int [,]) (x, y) =
             |> Seq.toList
 
         let isBefore i = i < curIndex
-        let isAfter i = i < curIndex
+        let isAfter i = i > curIndex
 
-        let before = filter isBefore
+        let before = filter isBefore |> List.rev
         let after = filter isAfter
 
         [ before; after ]
 
 
-
     let column = grid |> Helpers.Array2D.getColumn y
     let row = grid |> Helpers.Array2D.getRow x
 
-    let columnSections = getSection column y
-    let rowSections = getSection row x
+    let columnSections = getSection column x
+    let rowSections = getSection row y
 
     let sumSection =
-        List.rev
-        >> function
-            | [] -> 0
-            | xs ->
-                let numTrees =
-                    xs
-                    |> Seq.takeWhile (fun e -> e < currentElement)
-                    |> Seq.length
+        function
+        | [] -> 0
+        | xs ->
+            let numTrees =
+                xs
+                |> Seq.takeWhile (fun e -> e < currentElement)
+                |> Seq.length
 
-                // If our view goes all the way to the edge, the number of trees
-                // is what we counted. Otherwise, add 1 to offset the taller tree we ran into
-                if xs.Length = numTrees then
-                    numTrees
-                else
-                    numTrees + 1
+            // If our view goes all the way to the edge, the number of trees
+            // is what we counted. Otherwise, add 1 to offset the taller tree we ran into
+            if xs.Length = numTrees then
+                numTrees
+            else
+                numTrees + 1
 
-    [ columnSections; rowSections ]
-    |> List.concat
-    |> List.map sumSection
-    |> List.product
+    let sections = [ columnSections; rowSections ] |> List.concat
+
+    let product = sections |> List.map sumSection |> List.product
+    product
+
 
 let getVisibilityScore' x y _cur = getVisibilityScore mainGrid (x, y)
 
