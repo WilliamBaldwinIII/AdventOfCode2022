@@ -8,15 +8,11 @@ let fileName = $"9-ex"
 
 let fileLines = FileHelpers.readNumFile fileName
 
-let mainGrid: bool [,] = Array2D.init 100 100 (fun x y -> false)
 
-let initialX = 50
-let initialY = 50
+let mainGrid: bool [,] = Array2D.init 100 100 (fun x y -> false)
 
 type RopePart = { xPos: int; yPos: int }
 
-let head = { xPos = initialX; yPos = initialY }
-let tail = { xPos = initialX; yPos = initialY }
 
 type Direction =
     | Up
@@ -28,10 +24,10 @@ module Direction =
     let create =
         String.trim
         >> function
-            | "u" -> Up
-            | "d" -> Down
-            | "l" -> Left
-            | "r" -> Right
+            | "U" -> Up
+            | "D" -> Down
+            | "L" -> Left
+            | "R" -> Right
             | other -> failwith $"Invalid Direction: {other}"
 
 type Move = { Direction: Direction; Amount: int }
@@ -87,7 +83,7 @@ module Move =
             let newX, newY =
                 if head.xPos = tail.xPos then
                     if head.yPos > tail.yPos then
-                        tail.xPos, tail.yPos 1
+                        tail.xPos, tail.yPos - 1
                     else
                         tail.xPos, tail.yPos - 1
                 elif head.yPos = tail.yPos then
@@ -103,7 +99,7 @@ module Move =
             { tail with xPos = newX; yPos = newY }
 
 
-    let move (head: RopePart) (tail: RopePart) move =
+    let move (head: RopePart, tail: RopePart) move =
         let amount = move.Amount
         let xPos = head.xPos
         let yPos = head.yPos
@@ -134,5 +130,19 @@ module Move =
         newHead, newTail
 
 
+
+let initialX = 50
+let initialY = 50
+
+let head = { xPos = initialX; yPos = initialY }
+let tail = { xPos = initialX; yPos = initialY }
+
 let moves = fileLines |> List.map Move.parseLine
-raise
+
+moves |> List.fold Move.move (head, tail)
+
+let numPositionsTailTouched =
+    mainGrid
+    |> Array2D.flatten
+    |> Seq.filter id
+    |> Seq.length
