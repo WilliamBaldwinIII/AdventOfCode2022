@@ -52,14 +52,56 @@ module Move =
         let xDiff = abs (head.xPos - tail.xPos)
         let yDiff = abs (head.yPos - tail.yPos)
 
+        if xDiff > 2 || yDiff > 2 then
+            failwith $"Head and tail are too far apart! Head: %A{head}, Tail: %A{tail}"
+
         xDiff <= 1 && yDiff <= 1
+
+    let getAllAdjacent (ropePart: RopePart) =
+        [ for x in ropePart.xPos - 1 .. ropePart.xPos + 1 do
+              for y in ropePart.yPos - 1 .. ropePart.yPos + 1 do
+                  (x, y) ]
+
+    let getDirectlyAdjacent (ropePart: RopePart) =
+        [ for x in ropePart.xPos - 1 .. ropePart.xPos + 1 do
+              for y in ropePart.yPos - 1 .. ropePart.yPos + 1 do
+                  if x = ropePart.xPos || y = ropePart.yPos then
+                      (x, y) ]
+
+    let moveDiagonal (head: RopePart) (tail: RopePart) =
+        let headAdjacent = getDirectlyAdjacent head |> set
+        let tailAdjacent = getAllAdjacent tail |> set
+
+        let newX, newY =
+            Set.intersect headAdjacent tailAdjacent
+            |> Seq.exactlyOne
+
+        newX, newY
+
 
     let moveTail (head: RopePart) (tail: RopePart) =
         if areAdjacent head tail then
             tail
         else
             // TODO
-            tail
+            let newX, newY =
+                if head.xPos = tail.xPos then
+                    if head.yPos > tail.yPos then
+                        tail.xPos, tail.yPos 1
+                    else
+                        tail.xPos, tail.yPos - 1
+                elif head.yPos = tail.yPos then
+                    if head.yPos > tail.yPos then
+                        tail.xPos + 1, tail.yPos
+                    else
+                        tail.xPos - 1, tail.yPos
+                else // Diagonal
+                    moveDiagonal head tail
+
+            mainGrid[newX, newY] <- true
+
+            { tail with xPos = newX; yPos = newY }
+
 
     let move (head: RopePart) (tail: RopePart) move =
         let amount = move.Amount
