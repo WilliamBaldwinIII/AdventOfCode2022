@@ -2,17 +2,55 @@
 #load "Helpers.fs"
 
 open Helpers
+open System
 
+//fsi.ShowDeclarationValues <- false
 
-let fileName = $"9-ex"
+let fileName = $"9"
 
 let fileLines = FileHelpers.readNumFile fileName
 
+let initialX = 250
+let initialY = 250
 
-let mainGrid: bool [,] = Array2D.init 100 100 (fun x y -> false)
+let mainGrid: bool [,] = Array2D.init 500 500 (fun x y -> false)
+
 
 type RopePart = { xPos: int; yPos: int }
 
+let printGridSection (head: RopePart) (tail: RopePart) =
+    for y in initialY - 10 .. initialY + 10 do
+        for x in initialX - 10 .. initialX + 10 do
+            if x = head.xPos && y = head.yPos then
+                Console.Write "H"
+            elif x = tail.xPos && y = tail.yPos then
+                Console.Write "T"
+            elif mainGrid[x, y] then
+                Console.Write "#"
+
+            else
+                Console.Write "."
+
+        Console.WriteLine ""
+
+    Console.WriteLine ""
+
+let printGridSection' (head: RopePart) (tail: RopePart) =
+    for y in head.yPos - 5 .. head.yPos + 5 do
+        for x in head.xPos - 5 .. head.xPos + 5 do
+            if x = head.xPos && y = head.yPos then
+                Console.Write "H"
+            elif x = tail.xPos && y = tail.yPos then
+                Console.Write "T"
+            elif mainGrid[x, y] then
+                Console.Write "#"
+
+            else
+                Console.Write "."
+
+        Console.WriteLine ""
+
+    Console.WriteLine ""
 
 type Direction =
     | Up
@@ -33,6 +71,9 @@ module Direction =
 type Move = { Direction: Direction; Amount: int }
 
 module Move =
+    let toString (move: Move) =
+        $"{move.Direction.ToString()} {move.Amount}"
+
     let parseLine (line: string) =
         match String.split " " line with
         | [| direction; amount |] ->
@@ -67,6 +108,7 @@ module Move =
 
     let moveTail (head: RopePart) (tail: RopePart) =
         if areAdjacent head tail then
+            mainGrid[tail.xPos, tail.yPos] <- true
             tail
         else
             let newX, newY =
@@ -96,9 +138,21 @@ module Move =
             | Left -> xPos - amount, yPos
             | Right -> xPos + amount, yPos
 
+        let xPositions =
+            if xPos < newX then
+                [ xPos..newX ]
+            else
+                List.rev [ newX..xPos ]
+
+        let yPositions =
+            if yPos < newY then
+                [ yPos..newY ]
+            else
+                List.rev [ newY..yPos ]
+
         let positionList =
-            [ for x in xPos..newX do
-                  for y in yPos..newY do
+            [ for x in xPositions do
+                  for y in yPositions do
                       x, y ]
 
         let foldFn (head, tail) (x, y) =
@@ -107,17 +161,23 @@ module Move =
 
             let newTail = moveTail newHead tail
 
+            //printGridSection newHead newTail
             newHead, newTail
 
 
+        //Console.WriteLine $"{move |> toString}"
         let newHead, newTail = positionList |> List.fold foldFn (head, tail)
+
+        //Console.WriteLine "Done with turn!"
+
+        //printGridSection newHead newTail
+        //Console.WriteLine "----------------"
+
 
         newHead, newTail
 
 
 
-let initialX = 50
-let initialY = 50
 
 let head = { xPos = initialX; yPos = initialY }
 let tail = { xPos = initialX; yPos = initialY }
@@ -131,3 +191,6 @@ let numPositionsTailTouched =
     |> Array2D.flatten
     |> Seq.filter id
     |> Seq.length
+
+
+Console.WriteLine $"Num positions: {numPositionsTailTouched}"
