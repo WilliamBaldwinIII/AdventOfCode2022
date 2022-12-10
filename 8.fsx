@@ -1,8 +1,6 @@
 ﻿#load "FileHelpers.fs"
 #load "Helpers.fs"
 
-open System
-open System.Text.RegularExpressions
 open Helpers
 
 
@@ -64,7 +62,7 @@ let allVisible =
     |> Seq.filter id
     |> Seq.length
 
-// -------------- Part 2 -------------- 
+// -------------- Part 2 --------------
 let getVisibilityScore (grid: int [,]) (x, y) =
     let currentElement = grid[x, y]
 
