@@ -64,34 +64,20 @@ module Move =
                   if x = ropePart.xPos || y = ropePart.yPos then
                       (x, y) ]
 
-    let moveDiagonal (head: RopePart) (tail: RopePart) =
-        let headAdjacent = getDirectlyAdjacent head |> set
-        let tailAdjacent = getAllAdjacent tail |> set
-
-        let newX, newY =
-            Set.intersect headAdjacent tailAdjacent
-            |> Seq.exactlyOne
-
-        newX, newY
-
 
     let moveTail (head: RopePart) (tail: RopePart) =
         if areAdjacent head tail then
             tail
         else
             let newX, newY =
-                if head.xPos = tail.xPos then
-                    if head.yPos > tail.yPos then
-                        tail.xPos, tail.yPos - 1
-                    else
-                        tail.xPos, tail.yPos - 1
-                elif head.yPos = tail.yPos then
-                    if head.xPos > tail.xPos then
-                        tail.xPos + 1, tail.yPos
-                    else
-                        tail.xPos - 1, tail.yPos
-                else // Diagonal
-                    moveDiagonal head tail
+                let headAdjacent = getDirectlyAdjacent head |> set
+                let tailAdjacent = getAllAdjacent tail |> set
+
+                let newX, newY =
+                    Set.intersect headAdjacent tailAdjacent
+                    |> Seq.exactlyOne
+
+                newX, newY
 
             mainGrid[newX, newY] <- true
 
