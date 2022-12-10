@@ -79,7 +79,6 @@ module Move =
         if areAdjacent head tail then
             tail
         else
-            // TODO
             let newX, newY =
                 if head.xPos = tail.xPos then
                     if head.yPos > tail.yPos then
@@ -87,7 +86,7 @@ module Move =
                     else
                         tail.xPos, tail.yPos - 1
                 elif head.yPos = tail.yPos then
-                    if head.yPos > tail.yPos then
+                    if head.xPos > tail.xPos then
                         tail.xPos + 1, tail.yPos
                     else
                         tail.xPos - 1, tail.yPos
