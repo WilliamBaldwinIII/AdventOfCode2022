@@ -48,10 +48,23 @@ module Move =
 
         | _ -> failwith $"Can't parse line: {line}"
 
-    let move (ropePart: RopePart) move =
+    let areAdjacent (head: RopePart) (tail: RopePart) =
+        let xDiff = abs (head.xPos - tail.xPos)
+        let yDiff = abs (head.yPos - tail.yPos)
+
+        xDiff <= 1 && yDiff <= 1
+
+    let moveTail (head: RopePart) (tail: RopePart) =
+        if areAdjacent head tail then
+            tail
+        else
+            // TODO
+            tail
+
+    let move (head: RopePart) (tail: RopePart) move =
         let amount = move.Amount
-        let xPos = ropePart.xPos
-        let yPos = ropePart.yPos
+        let xPos = head.xPos
+        let yPos = head.yPos
 
         let newX, newY =
             match move.Direction with
@@ -60,6 +73,24 @@ module Move =
             | Left -> xPos - amount, yPos
             | Right -> xPos + amount, yPos
 
-        { ropePart with
-            xPos = newX
-            yPos = newY }
+        let positionList =
+            [ for x in xPos..newX do
+                  for y in yPos..newY do
+                      x, y ]
+
+        let foldFn (head, tail) (x, y) =
+
+            let newHead = { head with xPos = x; yPos = y }
+
+            let newTail = moveTail newHead tail
+
+            newHead, newTail
+
+
+        let newHead, newTail = positionList |> List.fold foldFn (head, tail)
+
+        newHead, newTail
+
+
+let moves = fileLines |> List.map Move.parseLine
+raise
