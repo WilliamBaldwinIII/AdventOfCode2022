@@ -6,14 +6,19 @@ open System
 
 //fsi.ShowDeclarationValues <- false
 
-let fileName = $"9"
+let fileName = $"9-ex"
 
 let fileLines = FileHelpers.readNumFile fileName
 
 let initialX = 250
 let initialY = 250
 
+
 let mainGrid: bool [,] = Array2D.init 500 500 (fun x y -> false)
+
+let resetGrid () =
+    mainGrid
+    |> Array2D.iteri (fun x y _ -> mainGrid[x, y] <- false)
 
 
 type RopePart = { xPos: int; yPos: int }
@@ -106,7 +111,7 @@ module Move =
                       (x, y) ]
 
 
-    let moveTail (head: RopePart) (tail: RopePart) =
+    let moveTail setVisited (head: RopePart) (tail: RopePart) =
         if areAdjacent head tail then
             mainGrid[tail.xPos, tail.yPos] <- true
             tail
@@ -115,18 +120,32 @@ module Move =
                 let headAdjacent = getDirectlyAdjacent head |> set
                 let tailAdjacent = getAllAdjacent tail |> set
 
-                let newX, newY =
+                let intersection =
                     Set.intersect headAdjacent tailAdjacent
-                    |> Seq.exactlyOne
+                    |> Seq.tryExactlyOne
+
+                let newX, newY =
+                    match intersection with
+                    | None ->
+                        // If we didn't find any directly adjacent, expand to diagonals
+                        let headAdjacent = getAllAdjacent head |> set
+
+                        let x, y =
+                            Set.intersect headAdjacent tailAdjacent
+                            |> Seq.exactlyOne
+
+                        x, y
+                    | Some (x, y) -> x, y
 
                 newX, newY
 
-            mainGrid[newX, newY] <- true
+            if setVisited then
+                mainGrid[newX, newY] <- true
 
             { tail with xPos = newX; yPos = newY }
 
 
-    let move (head: RopePart, tail: RopePart) move =
+    let move (head: RopePart, tail: RopePart list) move =
         let amount = move.Amount
         let xPos = head.xPos
         let yPos = head.yPos
@@ -159,14 +178,32 @@ module Move =
 
             let newHead = { head with xPos = x; yPos = y }
 
-            let newTail = moveTail newHead tail
+            let newTail = moveTail true newHead tail
+
+            //printGridSection newHead newTail
+            newHead, newTail
+
+        let foldManyFn (head, tail) (x, y) =
+
+            let newHead = { head with xPos = x; yPos = y }
+
+            let rec moveTail' newTail currentHead currentTail =
+                match currentTail with
+                | [] -> newTail
+                | currentRopePart :: xs ->
+                    let setVisited = xs |> List.isEmpty // Only set visited when the last rope part touches
+
+                    let newRopePart = moveTail setVisited currentHead currentRopePart
+                    moveTail' (newTail @ [ newRopePart ]) newRopePart xs
+
+            let newTail = moveTail' [] newHead tail
 
             //printGridSection newHead newTail
             newHead, newTail
 
 
         //Console.WriteLine $"{move |> toString}"
-        let newHead, newTail = positionList |> List.fold foldFn (head, tail)
+        let newHead, newTail = positionList |> List.fold foldManyFn (head, tail)
 
         //Console.WriteLine "Done with turn!"
 
@@ -184,7 +221,7 @@ let tail = { xPos = initialX; yPos = initialY }
 
 let moves = fileLines |> List.map Move.parseLine
 
-moves |> List.fold Move.move (head, tail)
+moves |> List.fold Move.move (head, [ tail ])
 
 let numPositionsTailTouched =
     mainGrid
@@ -193,4 +230,20 @@ let numPositionsTailTouched =
     |> Seq.length
 
 
-Console.WriteLine $"Num positions: {numPositionsTailTouched}"
+Console.WriteLine $"Part 1 -- Num positions: {numPositionsTailTouched}"
+
+// Part 2
+let multiTail =
+    [ for _ in 1..9 do
+          { xPos = initialX; yPos = initialY } ]
+
+resetGrid ()
+moves |> List.fold Move.move (head, multiTail)
+
+let numPositionsTailTouchedPt2 =
+    mainGrid
+    |> Array2D.flatten
+    |> Seq.filter id
+    |> Seq.length
+
+Console.WriteLine $"Part 2 -- Num positions: {numPositionsTailTouchedPt2}"
