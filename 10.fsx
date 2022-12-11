@@ -12,7 +12,8 @@ let fileLines = FileHelpers.readNumFile fileName
 
 let maxCycle = 220
 
-let isCountCycle cycle = (cycle - 20) % 40 = 0
+let isCountCycle cycle =
+    cycle <= maxCycle && (cycle - 20) % 40 = 0
 
 type Move =
     | Noop
@@ -40,13 +41,22 @@ type Cycle =
 
 let processMove (cycle: Cycle) (move: Move) =
 
+    Console.WriteLine($"processMove: {move}")
+
     let rec runCycle currentCycle (numCyclesRemainingForMove: int) signalStrengths =
         if numCyclesRemainingForMove <= 0 then
+            Console.WriteLine($"runCycle: returning")
+
+            Console.WriteLine(
+                $"runCycle: currentCycle {currentCycle}, numCyclesRemainingForMove {numCyclesRemainingForMove}, signalStrengths = {signalStrengths} "
+            )
+
             currentCycle, signalStrengths
         else
             let signalStrength =
-                if isCountCycle cycle.CurrentCycle then
-                    Some cycle.CurrentSignalStrengthSum
+                if isCountCycle currentCycle then
+                    (cycle.CurrentSignalStrengthSum * currentCycle)
+                    |> Some
                 else
                     None
 
@@ -54,6 +64,12 @@ let processMove (cycle: Cycle) (move: Move) =
                 signalStrength
                 |> Option.map (fun s -> s :: cycle.SignalStrengths)
                 |> Option.defaultValue cycle.SignalStrengths
+
+            Console.WriteLine($"runCycle: returning")
+
+            Console.WriteLine(
+                $"runCycle: currentCycle {currentCycle}, numCyclesRemainingForMove {numCyclesRemainingForMove}, signalStrengths = {signalStrengths} "
+            )
 
             runCycle (currentCycle + 1) (numCyclesRemainingForMove - 1) signalStrengths
 
@@ -67,13 +83,17 @@ let processMove (cycle: Cycle) (move: Move) =
         | Noop -> cycle.CurrentSignalStrengthSum
         | AddX num -> cycle.CurrentSignalStrengthSum + num
 
-    { CurrentCycle = newCycle
+    Console.WriteLine(
+        $"processMove: currentCycle {newCycle}, CurrentSignalStrengthSum {newTotal}, signalStrengths = {signalStrengths} "
+    )
+
+    { CurrentCycle = newCycle + 1
       CurrentSignalStrengthSum = newTotal
       SignalStrengths = signalStrengths }
 
 let startCycle =
-    { CurrentCycle = 0
-      CurrentSignalStrengthSum = 0
+    { CurrentCycle = 1
+      CurrentSignalStrengthSum = 1
       SignalStrengths = [] }
 
 let endCycle = moves |> List.fold processMove startCycle
