@@ -6,7 +6,7 @@ open System
 
 //fsi.ShowDeclarationValues <- false
 
-let fileName = $"9-ex"
+let fileName = $"9"
 
 let fileLines = FileHelpers.readNumFile fileName
 
@@ -40,18 +40,32 @@ let printGridSection (head: RopePart) (tail: RopePart) =
 
     Console.WriteLine ""
 
-let printGridSection' (head: RopePart) (tail: RopePart) =
-    for y in head.yPos - 5 .. head.yPos + 5 do
-        for x in head.xPos - 5 .. head.xPos + 5 do
-            if x = head.xPos && y = head.yPos then
-                Console.Write "H"
-            elif x = tail.xPos && y = tail.yPos then
-                Console.Write "T"
-            elif mainGrid[x, y] then
-                Console.Write "#"
-
+let printGridSection' (head: RopePart) (tail: RopePart list) =
+    let rec getTailnum (xPos, yPos) curNum tail' =
+        match tail' with
+        | [] -> None
+        | x :: xs ->
+            if x.xPos = xPos && x.yPos = yPos then
+                Some curNum
             else
-                Console.Write "."
+                getTailnum (xPos, yPos) (curNum + 1) xs
+
+    for y in initialY - 10 .. initialY + 10 do
+        for x in initialX - 10 .. initialX + 10 do
+            let tailNum = getTailnum (x, y) 1 tail
+
+            match tailNum with
+            | Some t -> Console.Write($"{t}")
+
+            | None ->
+                if x = head.xPos && y = head.yPos then
+                    Console.Write "H"
+                //elif x = tail.xPos && y = tail.yPos then
+                //    Console.Write "T"
+                elif mainGrid[x, y] then
+                    Console.Write "#"
+                else
+                    Console.Write "."
 
         Console.WriteLine ""
 
@@ -113,7 +127,9 @@ module Move =
 
     let moveTail setVisited (head: RopePart) (tail: RopePart) =
         if areAdjacent head tail then
-            mainGrid[tail.xPos, tail.yPos] <- true
+            if setVisited then
+                mainGrid[tail.xPos, tail.yPos] <- true
+
             tail
         else
             let newX, newY =
@@ -198,7 +214,7 @@ module Move =
 
             let newTail = moveTail' [] newHead tail
 
-            //printGridSection newHead newTail
+            //printGridSection' newHead newTail
             newHead, newTail
 
 
@@ -207,7 +223,7 @@ module Move =
 
         //Console.WriteLine "Done with turn!"
 
-        //printGridSection newHead newTail
+        //printGridSection' newHead newTail
         //Console.WriteLine "----------------"
 
 
