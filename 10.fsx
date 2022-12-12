@@ -44,7 +44,7 @@ let processMove (cycle: Cycle) (move: Move) =
     Console.WriteLine($"processMove: {move}")
 
     let rec runCycle currentCycle (numCyclesRemainingForMove: int) signalStrengths =
-        if numCyclesRemainingForMove <= 0 then
+        if numCyclesRemainingForMove <= 1 then
             Console.WriteLine($"runCycle: returning")
 
             Console.WriteLine(
