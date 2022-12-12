@@ -1,0 +1,1060 @@
+Welcome to F# Interactive for .NET Core in Visual Studio. To execute code, either
+  1. Use 'Send to Interactive' (Alt-Enter or right-click) from an F# script. The F# Interactive process will
+     use any global.json settings associated with that script.
+  2. Press 'Enter' to start. The F# Interactive process will use default settings.
+> 
+
+Microsoft (R) F# Interactive version 12.4.0.0 for F# 7.0
+Copyright (c) Microsoft Corporation. All Rights Reserved.
+
+For help type #help;;
+
+> val it: unit = ()
+
+> [Loading C:\Users\11606\code\advent-of-code\AdventOfCode2022\FileHelpers.fs]
+module FSI_0003.FileHelpers
+val readFile: path: string -> string list
+ -> string array
+
+[Loading C:\Users\11606\code\advent-of-code\AdventOfCode2022\Helpers.fs]
+module FSI_0004.Helpers
+val readFile: path: string -> string list
+val readNumFile: fileName: 'a -> string list
+val readFileArr: path: string -> string array
+val loop: n: int -> fn: ('a -> 'a) -> starter: 'a -> 'a
+module Array2D =
+  val tryFindIndex:
+    item: 'a -> arr: 'a array2d -> (int * int) option when 'a: equality
+  val flatten: A: 'a array2d -> seq<'a>
+  val getColumn: c: int -> A: 'a array2d -> 'a array
+  val getRow: r: int -> A: 'a array2d -> 'a array
+module String =
+  val split: delimeter: string -> str: string -> string array
+  val fromCharArray: cArr: char array -> string
+  val trim: s: string -> string
+module List =
+  val product: (int list -> int)
+
+processMove: BEFORE currentCycle 1, CurrentSignalStrengthSum 1, signalStrengths = [] 
+processMove: AddX 15
+runCycle: currentCycle 1, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 2, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 3, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 3, CurrentSignalStrengthSum 16, signalStrengths = [] 
+processMove: BEFORE currentCycle 4, CurrentSignalStrengthSum 16, signalStrengths = [] 
+processMove: AddX -11
+runCycle: currentCycle 4, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 5, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 6, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 6, CurrentSignalStrengthSum 5, signalStrengths = [] 
+processMove: BEFORE currentCycle 7, CurrentSignalStrengthSum 5, signalStrengths = [] 
+processMove: AddX 6
+runCycle: currentCycle 7, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 8, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 9, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 9, CurrentSignalStrengthSum 11, signalStrengths = [] 
+processMove: BEFORE currentCycle 10, CurrentSignalStrengthSum 11, signalStrengths = [] 
+processMove: AddX -3
+runCycle: currentCycle 10, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 11, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 12, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 12, CurrentSignalStrengthSum 8, signalStrengths = [] 
+processMove: BEFORE currentCycle 13, CurrentSignalStrengthSum 8, signalStrengths = [] 
+processMove: AddX 5
+runCycle: currentCycle 13, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 14, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 15, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 15, CurrentSignalStrengthSum 13, signalStrengths = [] 
+processMove: BEFORE currentCycle 16, CurrentSignalStrengthSum 13, signalStrengths = [] 
+processMove: AddX -1
+runCycle: currentCycle 16, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 17, numCyclesRemainingForMove 1, signalStrengths = [] 
+runCycle: returning
+runCycle: currentCycle 18, numCyclesRemainingForMove 0, signalStrengths = [] 
+processMove: AFTER currentCycle 18, CurrentSignalStrengthSum 12, signalStrengths = [] 
+processMove: BEFORE currentCycle 19, CurrentSignalStrengthSum 12, signalStrengths = [] 
+processMove: AddX -8
+runCycle: currentCycle 19, numCyclesRemainingForMove 2, signalStrengths = [] 
+runCycle: currentCycle 20, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 21, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 21, CurrentSignalStrengthSum 4, signalStrengths = [240] 
+processMove: BEFORE currentCycle 22, CurrentSignalStrengthSum 4, signalStrengths = [240] 
+processMove: AddX 13
+runCycle: currentCycle 22, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 23, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 24, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 24, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 25, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: AddX 4
+runCycle: currentCycle 25, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 26, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 27, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 27, CurrentSignalStrengthSum 21, signalStrengths = [240] 
+processMove: BEFORE currentCycle 28, CurrentSignalStrengthSum 21, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 28, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 29, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 29, CurrentSignalStrengthSum 21, signalStrengths = [240] 
+processMove: BEFORE currentCycle 30, CurrentSignalStrengthSum 21, signalStrengths = [240] 
+processMove: AddX -1
+runCycle: currentCycle 30, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 31, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 32, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 32, CurrentSignalStrengthSum 20, signalStrengths = [240] 
+processMove: BEFORE currentCycle 33, CurrentSignalStrengthSum 20, signalStrengths = [240] 
+processMove: AddX 5
+runCycle: currentCycle 33, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 34, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 35, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 35, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: BEFORE currentCycle 36, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: AddX -1
+runCycle: currentCycle 36, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 37, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 38, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 38, CurrentSignalStrengthSum 24, signalStrengths = [240] 
+processMove: BEFORE currentCycle 39, CurrentSignalStrengthSum 24, signalStrengths = [240] 
+processMove: AddX 5
+runCycle: currentCycle 39, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 40, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 41, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 41, CurrentSignalStrengthSum 29, signalStrengths = [240] 
+processMove: BEFORE currentCycle 42, CurrentSignalStrengthSum 29, signalStrengths = [240] 
+processMove: AddX -1
+runCycle: currentCycle 42, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 43, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 44, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 44, CurrentSignalStrengthSum 28, signalStrengths = [240] 
+processMove: BEFORE currentCycle 45, CurrentSignalStrengthSum 28, signalStrengths = [240] 
+processMove: AddX 5
+runCycle: currentCycle 45, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 46, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 47, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 47, CurrentSignalStrengthSum 33, signalStrengths = [240] 
+processMove: BEFORE currentCycle 48, CurrentSignalStrengthSum 33, signalStrengths = [240] 
+processMove: AddX -1
+runCycle: currentCycle 48, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 49, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 50, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 50, CurrentSignalStrengthSum 32, signalStrengths = [240] 
+processMove: BEFORE currentCycle 51, CurrentSignalStrengthSum 32, signalStrengths = [240] 
+processMove: AddX 5
+runCycle: currentCycle 51, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 52, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 53, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 53, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 54, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: AddX -1
+runCycle: currentCycle 54, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 55, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 56, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 56, CurrentSignalStrengthSum 36, signalStrengths = [240] 
+processMove: BEFORE currentCycle 57, CurrentSignalStrengthSum 36, signalStrengths = [240] 
+processMove: AddX -35
+runCycle: currentCycle 57, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 58, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 59, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 59, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: BEFORE currentCycle 60, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 60, numCyclesRemainingForMove 2, signalStrengths = [60; 240] 
+runCycle: currentCycle 61, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 62, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 62, CurrentSignalStrengthSum 2, signalStrengths = [240] 
+processMove: BEFORE currentCycle 63, CurrentSignalStrengthSum 2, signalStrengths = [240] 
+processMove: AddX 24
+runCycle: currentCycle 63, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 64, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 65, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 65, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: BEFORE currentCycle 66, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: AddX -19
+runCycle: currentCycle 66, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 67, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 68, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 68, CurrentSignalStrengthSum 7, signalStrengths = [240] 
+processMove: BEFORE currentCycle 69, CurrentSignalStrengthSum 7, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 69, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 70, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 71, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 71, CurrentSignalStrengthSum 8, signalStrengths = [240] 
+processMove: BEFORE currentCycle 72, CurrentSignalStrengthSum 8, signalStrengths = [240] 
+processMove: AddX 16
+runCycle: currentCycle 72, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 73, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 74, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 74, CurrentSignalStrengthSum 24, signalStrengths = [240] 
+processMove: BEFORE currentCycle 75, CurrentSignalStrengthSum 24, signalStrengths = [240] 
+processMove: AddX -11
+runCycle: currentCycle 75, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 76, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 77, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 77, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: BEFORE currentCycle 78, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 78, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 79, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 79, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: BEFORE currentCycle 80, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 80, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 81, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 81, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: BEFORE currentCycle 82, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: AddX 21
+runCycle: currentCycle 82, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 83, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 84, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 84, CurrentSignalStrengthSum 34, signalStrengths = [240] 
+processMove: BEFORE currentCycle 85, CurrentSignalStrengthSum 34, signalStrengths = [240] 
+processMove: AddX -15
+runCycle: currentCycle 85, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 86, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 87, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 87, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: BEFORE currentCycle 88, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 88, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 89, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 89, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: BEFORE currentCycle 90, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 90, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 91, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 91, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: BEFORE currentCycle 92, CurrentSignalStrengthSum 19, signalStrengths = [240] 
+processMove: AddX -3
+runCycle: currentCycle 92, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 93, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 94, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 94, CurrentSignalStrengthSum 16, signalStrengths = [240] 
+processMove: BEFORE currentCycle 95, CurrentSignalStrengthSum 16, signalStrengths = [240] 
+processMove: AddX 9
+runCycle: currentCycle 95, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 96, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 97, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 97, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: BEFORE currentCycle 98, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 98, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 99, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 100, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 100, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: BEFORE currentCycle 101, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: AddX -3
+runCycle: currentCycle 101, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 102, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 103, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 103, CurrentSignalStrengthSum 23, signalStrengths = [240] 
+processMove: BEFORE currentCycle 104, CurrentSignalStrengthSum 23, signalStrengths = [240] 
+processMove: AddX 8
+runCycle: currentCycle 104, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 105, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 106, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 106, CurrentSignalStrengthSum 31, signalStrengths = [240] 
+processMove: BEFORE currentCycle 107, CurrentSignalStrengthSum 31, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 107, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 108, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 109, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 109, CurrentSignalStrengthSum 32, signalStrengths = [240] 
+processMove: BEFORE currentCycle 110, CurrentSignalStrengthSum 32, signalStrengths = [240] 
+processMove: AddX 5
+runCycle: currentCycle 110, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 111, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 112, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 112, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 113, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 113, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 114, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 114, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 115, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 115, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 116, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 116, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 117, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 117, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 118, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 118, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 119, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 119, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 120, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 120, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 121, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 121, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 122, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 122, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: BEFORE currentCycle 123, CurrentSignalStrengthSum 37, signalStrengths = [240] 
+processMove: AddX -36
+runCycle: currentCycle 123, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 124, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 125, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 125, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: BEFORE currentCycle 126, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 126, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 127, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 127, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: BEFORE currentCycle 128, CurrentSignalStrengthSum 1, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 128, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 129, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 130, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 130, CurrentSignalStrengthSum 2, signalStrengths = [240] 
+processMove: BEFORE currentCycle 131, CurrentSignalStrengthSum 2, signalStrengths = [240] 
+processMove: AddX 7
+runCycle: currentCycle 131, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 132, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 133, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 133, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: BEFORE currentCycle 134, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 134, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 135, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 135, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: BEFORE currentCycle 136, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 136, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 137, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 137, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: BEFORE currentCycle 138, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 138, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 139, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 139, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: BEFORE currentCycle 140, CurrentSignalStrengthSum 9, signalStrengths = [240] 
+processMove: AddX 2
+runCycle: currentCycle 140, numCyclesRemainingForMove 2, signalStrengths = [1260; 240] 
+runCycle: currentCycle 141, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 142, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 142, CurrentSignalStrengthSum 11, signalStrengths = [240] 
+processMove: BEFORE currentCycle 143, CurrentSignalStrengthSum 11, signalStrengths = [240] 
+processMove: AddX 6
+runCycle: currentCycle 143, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 144, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 145, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 145, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 146, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 146, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 147, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 147, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 148, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 148, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 149, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 149, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 150, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 150, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 151, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 151, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 152, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 152, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 153, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 153, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 154, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 154, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 155, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 155, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: BEFORE currentCycle 156, CurrentSignalStrengthSum 17, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 156, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 157, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 158, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 158, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: BEFORE currentCycle 159, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 159, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 160, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 160, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: BEFORE currentCycle 161, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 161, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 162, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 162, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: BEFORE currentCycle 163, CurrentSignalStrengthSum 18, signalStrengths = [240] 
+processMove: AddX 7
+runCycle: currentCycle 163, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 164, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 165, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 165, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: BEFORE currentCycle 166, CurrentSignalStrengthSum 25, signalStrengths = [240] 
+processMove: AddX 1
+runCycle: currentCycle 166, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 167, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 168, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 168, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: BEFORE currentCycle 169, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 169, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 170, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 170, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: BEFORE currentCycle 171, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: AddX -13
+runCycle: currentCycle 171, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 172, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 173, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 173, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: BEFORE currentCycle 174, CurrentSignalStrengthSum 13, signalStrengths = [240] 
+processMove: AddX 13
+runCycle: currentCycle 174, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 175, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 176, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 176, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: BEFORE currentCycle 177, CurrentSignalStrengthSum 26, signalStrengths = [240] 
+processMove: AddX 7
+runCycle: currentCycle 177, numCyclesRemainingForMove 2, signalStrengths = [240] 
+runCycle: currentCycle 178, numCyclesRemainingForMove 1, signalStrengths = [240] 
+runCycle: returning
+runCycle: currentCycle 179, numCyclesRemainingForMove 0, signalStrengths = [240] 
+processMove: AFTER currentCycle 179, CurrentSignalStrengthSum 33, signalStrengths = [240] 
+processMove: BEFORE currentCycle 180, CurrentSignalStrengthSum 33, signalStrengths = [240] 
+processMove: Noop
+runCycle: currentCycle 180, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 181, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 181, CurrentSignalStrengthSum 33, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 182, CurrentSignalStrengthSum 33, signalStrengths = [5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 182, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 183, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 184, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 184, CurrentSignalStrengthSum 34, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 185, CurrentSignalStrengthSum 34, signalStrengths = [5940; 240] 
+processMove: AddX -33
+runCycle: currentCycle 185, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 186, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 187, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 187, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 188, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 188, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 189, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 189, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 190, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 190, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 191, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 191, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 192, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 192, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 193, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 193, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 194, CurrentSignalStrengthSum 1, signalStrengths = [5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 194, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 195, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 196, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 196, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 197, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 197, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 198, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 198, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 199, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 199, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 200, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 200, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 201, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 201, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 202, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 202, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 203, CurrentSignalStrengthSum 3, signalStrengths = [5940; 240] 
+processMove: AddX 8
+runCycle: currentCycle 203, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 204, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 205, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 205, CurrentSignalStrengthSum 11, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 206, CurrentSignalStrengthSum 11, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 206, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 207, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 207, CurrentSignalStrengthSum 11, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 208, CurrentSignalStrengthSum 11, signalStrengths = [5940; 240] 
+processMove: AddX -1
+runCycle: currentCycle 208, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 209, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 210, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 210, CurrentSignalStrengthSum 10, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 211, CurrentSignalStrengthSum 10, signalStrengths = [5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 211, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 212, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 213, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 213, CurrentSignalStrengthSum 12, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 214, CurrentSignalStrengthSum 12, signalStrengths = [5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 214, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 215, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 216, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 216, CurrentSignalStrengthSum 13, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 217, CurrentSignalStrengthSum 13, signalStrengths = [5940; 240] 
+processMove: Noop
+runCycle: currentCycle 217, numCyclesRemainingForMove 1, signalStrengths = [5940; 240] 
+runCycle: returning
+runCycle: currentCycle 218, numCyclesRemainingForMove 0, signalStrengths = [5940; 240] 
+processMove: AFTER currentCycle 218, CurrentSignalStrengthSum 13, signalStrengths = [5940; 240] 
+processMove: BEFORE currentCycle 219, CurrentSignalStrengthSum 13, signalStrengths = [5940; 240] 
+processMove: AddX 17
+runCycle: currentCycle 219, numCyclesRemainingForMove 2, signalStrengths = [5940; 240] 
+runCycle: currentCycle 220, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 221, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 221, CurrentSignalStrengthSum 30, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 222, CurrentSignalStrengthSum 30, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -9
+runCycle: currentCycle 222, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 223, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 224, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 224, CurrentSignalStrengthSum 21, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 225, CurrentSignalStrengthSum 21, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 225, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 226, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 227, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 227, CurrentSignalStrengthSum 22, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 228, CurrentSignalStrengthSum 22, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 228, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 229, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 230, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 230, CurrentSignalStrengthSum 23, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 231, CurrentSignalStrengthSum 23, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -3
+runCycle: currentCycle 231, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 232, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 233, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 233, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 234, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 11
+runCycle: currentCycle 234, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 235, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 236, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 236, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 237, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 237, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 238, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 238, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 239, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 239, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 240, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 240, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 241, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 241, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 242, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 243, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 243, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 244, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 244, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 245, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 245, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 246, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 246, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 247, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 248, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 248, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 249, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 249, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 250, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 250, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 251, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 251, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 252, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 252, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 253, CurrentSignalStrengthSum 33, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -13
+runCycle: currentCycle 253, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 254, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 255, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 255, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 256, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -19
+runCycle: currentCycle 256, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 257, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 258, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 258, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 259, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 259, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 260, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 261, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 261, CurrentSignalStrengthSum 2, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 262, CurrentSignalStrengthSum 2, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 3
+runCycle: currentCycle 262, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 263, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 264, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 264, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 265, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 26
+runCycle: currentCycle 265, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 266, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 267, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 267, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 268, CurrentSignalStrengthSum 31, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -30
+runCycle: currentCycle 268, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 269, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 270, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 270, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 271, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 12
+runCycle: currentCycle 271, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 272, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 273, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 273, CurrentSignalStrengthSum 13, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 274, CurrentSignalStrengthSum 13, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -1
+runCycle: currentCycle 274, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 275, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 276, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 276, CurrentSignalStrengthSum 12, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 277, CurrentSignalStrengthSum 12, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 3
+runCycle: currentCycle 277, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 278, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 279, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 279, CurrentSignalStrengthSum 15, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 280, CurrentSignalStrengthSum 15, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 280, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 281, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 282, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 282, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 283, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 283, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 284, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 284, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 285, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 285, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 286, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 286, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 287, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 287, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 288, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 288, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 289, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -9
+runCycle: currentCycle 289, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 290, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 291, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 291, CurrentSignalStrengthSum 7, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 292, CurrentSignalStrengthSum 7, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 18
+runCycle: currentCycle 292, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 293, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 294, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 294, CurrentSignalStrengthSum 25, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 295, CurrentSignalStrengthSum 25, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 295, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 296, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 297, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 297, CurrentSignalStrengthSum 26, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 298, CurrentSignalStrengthSum 26, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 298, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 299, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 300, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 300, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 301, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 301, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 302, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 302, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 303, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 303, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 304, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 304, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 305, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 9
+runCycle: currentCycle 305, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 306, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 307, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 307, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 308, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 308, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 309, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 309, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 310, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 310, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 311, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 311, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 312, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 312, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 313, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 313, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 314, CurrentSignalStrengthSum 37, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -1
+runCycle: currentCycle 314, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 315, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 316, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 316, CurrentSignalStrengthSum 36, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 317, CurrentSignalStrengthSum 36, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 317, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 318, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 319, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 319, CurrentSignalStrengthSum 38, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 320, CurrentSignalStrengthSum 38, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -37
+runCycle: currentCycle 320, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 321, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 322, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 322, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 323, CurrentSignalStrengthSum 1, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 323, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 324, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 325, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 325, CurrentSignalStrengthSum 2, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 326, CurrentSignalStrengthSum 2, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 3
+runCycle: currentCycle 326, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 327, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 328, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 328, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 329, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 329, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 330, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 330, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 331, CurrentSignalStrengthSum 5, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 15
+runCycle: currentCycle 331, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 332, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 333, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 333, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 334, CurrentSignalStrengthSum 20, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -21
+runCycle: currentCycle 334, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 335, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 336, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 336, CurrentSignalStrengthSum -1, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 337, CurrentSignalStrengthSum -1, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 22
+runCycle: currentCycle 337, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 338, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 339, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 339, CurrentSignalStrengthSum 21, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 340, CurrentSignalStrengthSum 21, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -6
+runCycle: currentCycle 340, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 341, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 342, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 342, CurrentSignalStrengthSum 15, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 343, CurrentSignalStrengthSum 15, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 343, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 344, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 345, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 345, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 346, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 346, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 347, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 347, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 348, CurrentSignalStrengthSum 16, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 348, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 349, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 350, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 350, CurrentSignalStrengthSum 18, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 351, CurrentSignalStrengthSum 18, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 351, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 352, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 353, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 353, CurrentSignalStrengthSum 19, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 354, CurrentSignalStrengthSum 19, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 354, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 355, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 355, CurrentSignalStrengthSum 19, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 356, CurrentSignalStrengthSum 19, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -10
+runCycle: currentCycle 356, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 357, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 358, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 358, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 359, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 359, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 360, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 360, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 361, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 361, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 362, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 362, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 363, CurrentSignalStrengthSum 9, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 20
+runCycle: currentCycle 363, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 364, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 365, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 365, CurrentSignalStrengthSum 29, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 366, CurrentSignalStrengthSum 29, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 1
+runCycle: currentCycle 366, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 367, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 368, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 368, CurrentSignalStrengthSum 30, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 369, CurrentSignalStrengthSum 30, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 369, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 370, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 371, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 371, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 372, CurrentSignalStrengthSum 32, signalStrengths = [2860; 5940; 240] 
+processMove: AddX 2
+runCycle: currentCycle 372, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 373, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 374, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 374, CurrentSignalStrengthSum 34, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 375, CurrentSignalStrengthSum 34, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -6
+runCycle: currentCycle 375, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 376, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 377, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 377, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 378, CurrentSignalStrengthSum 28, signalStrengths = [2860; 5940; 240] 
+processMove: AddX -11
+runCycle: currentCycle 378, numCyclesRemainingForMove 2, signalStrengths = [2860; 5940; 240] 
+runCycle: currentCycle 379, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 380, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 380, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 381, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 381, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 382, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 382, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 383, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 383, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 384, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 384, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: BEFORE currentCycle 385, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+processMove: Noop
+runCycle: currentCycle 385, numCyclesRemainingForMove 1, signalStrengths = [2860; 5940; 240] 
+runCycle: returning
+runCycle: currentCycle 386, numCyclesRemainingForMove 0, signalStrengths = [2860; 5940; 240] 
+processMove: AFTER currentCycle 386, CurrentSignalStrengthSum 17, signalStrengths = [2860; 5940; 240] 
+Part 1: 9040
+val fileName: string = "10-ex"
+val fileLines: string list =
+  ["addx 15"; "addx -11"; "addx 6"; "addx -3"; "addx 5"; "addx -1"; "addx -8";
+   "addx 13"; "addx 4"; "noop"; "addx -1"; "addx 5"; "addx -1"; "addx 5";
+   "addx -1"; "addx 5"; "addx -1"; "addx 5"; "addx -1"; "addx -35"; "addx 1";
+   "addx 24"; "addx -19"; "addx 1"; "addx 16"; "addx -11"; "noop"; "noop";
+   "addx 21"; "addx -15"; "noop"; "noop"; "addx -3"; "addx 9"; "addx 1";
+   "addx -3"; "addx 8"; "addx 1"; "addx 5"; "noop"; "noop"; "noop"; "noop";
+   "noop"; "addx -36"; "noop"; "addx 1"; "addx 7"; "noop"; "noop"; "noop";
+   "addx 2"; "addx 6"; "noop"; "noop"; "noop"; "noop"; "noop"; "addx 1";
+   "noop"; "noop"; "addx 7"; "addx 1"; "noop"; "addx -13"; "addx 13"; "addx 7";
+   "noop"; "addx 1"; "addx -33"; "noop"; "noop"; "noop"; "addx 2"; "noop";
+   "noop"; "noop"; "addx 8"; "noop"; "addx -1"; "addx 2"; "addx 1"; "noop";
+   "addx 17"; "addx -9"; "addx 1"; "addx 1"; "addx -3"; "addx 11"; "noop";
+   "noop"; "addx 1"; "noop"; "addx 1"; "noop"; "noop"; "addx -13"; "addx -19";
+   "addx 1"; "addx 3"; ...]
+val maxCycle: int = 220
+val isCountCycle: cycle: int -> bool
+type Move =
+  | Noop
+  | AddX of int
+val moveCycleCount: _arg1: Move -> int
+val parseMove: line: string -> Move
+val moves: Move list =
+  [AddX 15; AddX -11; AddX 6; AddX -3; AddX 5; AddX -1; AddX -8; AddX 13;
+   AddX 4; Noop; AddX -1; AddX 5; AddX -1; AddX 5; AddX -1; AddX 5; AddX -1;
+   AddX 5; AddX -1; AddX -35; AddX 1; AddX 24; AddX -19; AddX 1; AddX 16;
+   AddX -11; Noop; Noop; AddX 21; AddX -15; Noop; Noop; AddX -3; AddX 9;
+   AddX 1; AddX -3; AddX 8; AddX 1; AddX 5; Noop; Noop; Noop; Noop; Noop;
+   AddX -36; Noop; AddX 1; AddX 7; Noop; Noop; Noop; AddX 2; AddX 6; Noop;
+   Noop; Noop; Noop; Noop; AddX 1; Noop; Noop; AddX 7; AddX 1; Noop; AddX -13;
+   AddX 13; AddX 7; Noop; AddX 1; AddX -33; Noop; Noop; Noop; AddX 2; Noop;
+   Noop; Noop; AddX 8; Noop; AddX -1; AddX 2; AddX 1; Noop; AddX 17; AddX -9;
+   AddX 1; AddX 1; AddX -3; AddX 11; Noop; Noop; AddX 1; Noop; AddX 1; Noop;
+   Noop; AddX -13; AddX -19; AddX 1; AddX 3; ...]
+type Cycle =
+  {
+    CurrentCycle: int
+    CurrentSignalStrengthSum: int
+    SignalStrengths: int list
+  }
+val processMove: cycle: Cycle -> move: Move -> Cycle
+val startCycle: Cycle = { CurrentCycle = 1
+                          CurrentSignalStrengthSum = 1
+                          SignalStrengths = [] }
+val endCycle: Cycle = { CurrentCycle = 387
+                        CurrentSignalStrengthSum = 17
+                        SignalStrengths = [2860; 5940; 240] }
+val signalStrengthSum: int = 9040
+val it: unit = ()
+
+> 

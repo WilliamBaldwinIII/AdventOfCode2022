@@ -39,7 +39,16 @@ type Cycle =
       CurrentSignalStrengthSum: int
       SignalStrengths: int list }
 
+type PendingMove =
+    { Move: Move
+      NumCyclesRemainingForMove: int }
+
+
 let processMove (cycle: Cycle) (move: Move) =
+
+    Console.WriteLine(
+        $"processMove: BEFORE currentCycle {cycle.CurrentCycle}, CurrentSignalStrengthSum {cycle.CurrentSignalStrengthSum}, signalStrengths = {cycle.SignalStrengths} "
+    )
 
     Console.WriteLine($"processMove: {move}")
 
@@ -65,8 +74,6 @@ let processMove (cycle: Cycle) (move: Move) =
                 |> Option.map (fun s -> s :: cycle.SignalStrengths)
                 |> Option.defaultValue cycle.SignalStrengths
 
-            Console.WriteLine($"runCycle: returning")
-
             Console.WriteLine(
                 $"runCycle: currentCycle {currentCycle}, numCyclesRemainingForMove {numCyclesRemainingForMove}, signalStrengths = {signalStrengths} "
             )
@@ -84,8 +91,28 @@ let processMove (cycle: Cycle) (move: Move) =
         | AddX num -> cycle.CurrentSignalStrengthSum + num
 
     Console.WriteLine(
-        $"processMove: currentCycle {newCycle}, CurrentSignalStrengthSum {newTotal}, signalStrengths = {signalStrengths} "
+        $"processMove: AFTER currentCycle {newCycle}, CurrentSignalStrengthSum {newTotal}, signalStrengths = {signalStrengths} "
     )
+
+    let pendingMoves: PendingMove list = []
+
+    let newTotal =
+        pendingMoves
+        |> List.filter (fun p -> p.NumCyclesRemainingForMove <= 0)
+        |> List.sumBy (fun p ->
+            match p.Move with
+            | AddX num -> num
+            | Noop -> 0)
+
+    let newPendingMove =
+        { Move = move
+          NumCyclesRemainingForMove = moveCycleCount }
+
+
+    let newPendingMoves =
+        newPendingMove
+        :: (pendingMoves
+            |> List.filter (fun p -> p.NumCyclesRemainingForMove > 0))
 
     { CurrentCycle = newCycle + 1
       CurrentSignalStrengthSum = newTotal
