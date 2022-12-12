@@ -7,11 +7,9 @@ open System
 fsi.ShowDeclarationValues <- false
 fsi.ShowProperties <- false
 
-let fileName = $"10-ex"
+let fileName = $"10"
 
 let fileLines = FileHelpers.readNumFile fileName
-
-let maxCycle = 220
 
 let getCyclePosition cycle = cycle % 40
 let isNewLine cycle = (getCyclePosition (cycle)) = 0
@@ -44,7 +42,7 @@ type Cycle =
 
 let processMove (cycle: Cycle) (move: Move) =
     let isSpriteInCurrentPosition currentCycle currentSignalStrengthSum =
-        [ currentSignalStrengthSum - 1 .. currentSignalStrengthSum + 1 ]
+        [ currentSignalStrengthSum .. currentSignalStrengthSum + 2 ]
         |> List.contains (getCyclePosition currentCycle)
 
 
