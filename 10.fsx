@@ -4,7 +4,8 @@
 open Helpers
 open System
 
-//fsi.ShowDeclarationValues <- false
+fsi.ShowDeclarationValues <- false
+fsi.ShowProperties <- false
 
 let fileName = $"10-ex"
 
@@ -12,7 +13,10 @@ let fileLines = FileHelpers.readNumFile fileName
 
 let maxCycle = 220
 
-let isCountCycle cycle = (cycle - 20) % 40 = 0
+let getCyclePosition cycle = cycle % 40
+let isNewLine cycle = (getCyclePosition (cycle)) = 0
+let isCountCycle cycle = (getCyclePosition (cycle - 20)) = 0
+
 
 type Move =
     | Noop
@@ -39,10 +43,20 @@ type Cycle =
       SignalStrengths: int list }
 
 let processMove (cycle: Cycle) (move: Move) =
+    let isSpriteInCurrentPosition currentCycle currentSignalStrengthSum =
+        [ currentSignalStrengthSum - 1 .. currentSignalStrengthSum + 1 ]
+        |> List.contains (getCyclePosition currentCycle)
 
-    Console.WriteLine($"processMove: {move}")
 
     let rec runCycle currentCycle (numCyclesRemainingForMove: int) signalStrengths =
+        if isSpriteInCurrentPosition currentCycle cycle.CurrentSignalStrengthSum then
+            Console.Write "#"
+        else
+            Console.Write "."
+
+        if isNewLine currentCycle then
+            Console.WriteLine()
+
         let signalStrength =
             if isCountCycle currentCycle then
                 (cycle.CurrentSignalStrengthSum * currentCycle)
@@ -56,19 +70,9 @@ let processMove (cycle: Cycle) (move: Move) =
             |> Option.defaultValue signalStrengths
 
 
-        Console.WriteLine(
-            $"runCycle: currentCycle {currentCycle}, numCyclesRemainingForMove {numCyclesRemainingForMove}, signalStrengths = %A{signalStrengths'} "
-        )
-
-        //printfn "signalStrengths %A" signalStrengths
-
         if numCyclesRemainingForMove <= 1 then
-            Console.WriteLine($"runCycle: returning")
-
             currentCycle, signalStrengths'
         else
-
-            Console.WriteLine($"runCycle: running back around again")
 
             runCycle (currentCycle + 1) (numCyclesRemainingForMove - 1) signalStrengths'
 
@@ -82,11 +86,6 @@ let processMove (cycle: Cycle) (move: Move) =
         | Noop -> cycle.CurrentSignalStrengthSum
         | AddX num -> cycle.CurrentSignalStrengthSum + num
 
-    Console.WriteLine(
-        $"processMove: currentCycle {newCycle}, CurrentSignalStrengthSum {newTotal}, signalStrengths = {signalStrengths} "
-    )
-
-    //printfn "signalStrengths %A" signalStrengths
 
     { CurrentCycle = newCycle + 1
       CurrentSignalStrengthSum = newTotal
@@ -101,4 +100,5 @@ let endCycle = moves |> List.fold processMove startCycle
 
 let signalStrengthSum = endCycle.SignalStrengths |> List.sum
 
+printfn ""
 printfn $"Part 1: {signalStrengthSum}"
