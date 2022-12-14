@@ -7,12 +7,12 @@
 open Helpers
 open System
 
-//fsi.ShowDeclarationValues <- false
-//fsi.ShowProperties <- false
+fsi.ShowDeclarationValues <- false
+fsi.ShowProperties <- false
 
-let fileName = $"11"
+let fileName = $"11-ex"
 
-let fileLines = FileHelpers.readNumFile' fileName
+let fileLines = FileHelpers.readNumFile fileName
 
 type Item = int
 type MonkeyId = int
@@ -147,6 +147,21 @@ module Monkey =
             let itemNewWorryLevel = monkey.Operation item
             let itemNewWorryLevel = itemNewWorryLevel / 3
 
+            // https://en.wikipedia.org/wiki/Modulo_operation#Properties_(identities)
+            // n^x % n = 0 for all positive integer values of x.
+            // i.e. we can store the square root and keep rolling
+            let itemNewWorryLevel =
+                let itemSqrt = Math.Sqrt(itemNewWorryLevel)
+                let itemSqrtInt = int itemSqrt
+
+                if Math.Abs(itemSqrt - float itemSqrtInt) < Double.Epsilon then
+                    itemSqrtInt
+
+                else
+                    //if itemSqrt = itemSqrtInt
+                    //   && itemSqrtInt * itemSqrtInt = itemNewWorryLevel then
+                    itemNewWorryLevel
+
             let throwToMonkeyId =
                 if itemNewWorryLevel % monkey.TestDivisibleBy = 0 then
                     monkey.ThrowToMonkeyIfTrue
@@ -167,14 +182,6 @@ module Monkey =
 
         newMonkeyMap.Add(monkey.Id, newMonkey)
 
-//let chunked =
-//    fileLines
-//    |> List.filter (String.IsNullOrWhiteSpace >> not)
-//    |> List.chunkBySize 6
-//    |> List.mapi (fun i chunk -> i, chunk)
-//    |> List.iter (fun (i, chunk) ->
-//        chunk
-//        |> List.iter (fun line -> Console.WriteLine($"{i}: {line}")))
 
 let runRound (monkeyMap: Map<MonkeyId, Monkey>) =
     monkeyMap.Values
@@ -208,3 +215,37 @@ let top2Product =
     top2
     |> List.map (fun m -> m.NumItemsInspected)
     |> List.product
+
+
+// Part 2
+let newMonkeyMap2 = monkeyMap |> runRoundXTimes 10_000
+
+let top2_2 =
+    newMonkeyMap2.Values
+    |> Seq.sortByDescending (fun monkey -> monkey.NumItemsInspected)
+    |> Seq.take 2
+    |> Seq.toList
+
+let top2Product2 =
+    top2_2
+    |> List.map (fun m -> bigint m.NumItemsInspected)
+    |> List.product
+
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn $"Part 1: {top2Product}"
+printfn $"Part 2: {top2Product2}"
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
+printfn ""
