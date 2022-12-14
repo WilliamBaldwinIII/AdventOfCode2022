@@ -1,4 +1,7 @@
-﻿#load "FileHelpers.fs"
+﻿open System.Text.RegularExpressions
+
+
+#load "FileHelpers.fs"
 #load "Helpers.fs"
 
 open Helpers
@@ -38,4 +41,36 @@ type Monkey =
 
 
 module Monkey =
-    let parse (lines: string list)
+    let private monkeyIdRegex = Regex(@"Monkey (\d+):", RegexOptions.Compiled)
+
+    let private parseMonkeyId (line: string) =
+        if monkeyIdRegex.IsMatch line then
+            monkeyIdRegex.Match(line).Groups[1].Value |> int
+        else
+            failwith "Invalid Monkey ID syntax"
+
+    let private parseStartItems (line: string) =
+        let substr = line |> String.afterString "Starting items: "
+        let items = substr |> String.split ","
+
+        items |> List.ofArray
+
+    let private parseOperation (line: string) =
+        let substr = line |> String.afterString "Operation: new = "
+        let items = substr |> String.split ","
+
+        let parseOperator =
+            function
+            | "*" -> (*)
+            | "/" -> (/)
+            | "+" -> (+)
+            | "-" -> (-)
+            | "%" -> (%)
+            | other -> failwith $"{other} is an invalid operator!"
+
+
+        match items with
+        | [| oneVal; operator; otherVal |] -> ()
+        | i -> failwith $"Invalid operator! %A{i}"
+
+    let parse (lines: string list) = ()

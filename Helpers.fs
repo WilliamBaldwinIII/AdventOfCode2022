@@ -55,6 +55,10 @@ module String =
         | null -> null
         | _ -> s.Trim()
 
+    /// Get the contents of the string after the first instance of `toFind` is found.
+    let afterString (toFind: string) (s: string) =
+        s.Substring(s.IndexOf(toFind), toFind.Length)
+
 
 module List =
     let product = List.fold (fun total cur -> total * cur) 1
