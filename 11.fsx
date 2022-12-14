@@ -10,11 +10,13 @@ open System
 //fsi.ShowDeclarationValues <- false
 //fsi.ShowProperties <- false
 
-let fileName = $"11"
+let fileName = $"11-ex"
 
 let fileLines = FileHelpers.readNumFile' fileName
 
-type Item = int
+let zero = bigint 0
+
+type Item = bigint
 type MonkeyId = int
 
 type Monkey =
@@ -30,7 +32,7 @@ type Monkey =
       Operation: Item -> Item
 
       /// Shows how the monkey uses your worry level to decide where to throw an item next.
-      TestDivisibleBy: int
+      TestDivisibleBy: bigint
 
 
       /// Shows what happens with an item if the Test was true.
@@ -44,12 +46,12 @@ type Monkey =
 
 
       /// How many items has this monkey examined in the given timeframe?
-      NumItemsInspected: int }
+      NumItemsInspected: bigint }
 
 
 module Monkey =
     type private Operand =
-        | Number of int
+        | Number of bigint
         | Old
 
     let private monkeyIdRegex = Regex(@"Monkey (\d+):", RegexOptions.Compiled)
@@ -64,7 +66,7 @@ module Monkey =
         let substr = line |> String.afterString "Starting items: "
         let items = substr |> String.split ","
 
-        items |> List.ofArray |> List.map int
+        items |> List.ofArray |> List.map (int >> bigint)
 
     let private parseOperation (line: string) =
 
@@ -77,7 +79,7 @@ module Monkey =
             | other -> failwith $"{other} is an invalid operator!"
 
         let parseOperand (str: String) =
-            let isNumber, number = Int32.TryParse str
+            let isNumber, number = bigint.TryParse str
 
             if isNumber then
                 Number number
@@ -103,7 +105,10 @@ module Monkey =
 
         | i -> failwith $"Invalid operation! %A{i}"
 
-    let private parseTestDivisible = String.afterString "Test: divisible by " >> int
+    let private parseTestDivisible =
+        String.afterString "Test: divisible by "
+        >> int
+        >> bigint
 
     let private parseTrueMonkey =
         String.afterString "If true: throw to monkey "
@@ -129,7 +134,7 @@ module Monkey =
               TestDivisibleBy = testDivisibleBy
               ThrowToMonkeyIfTrue = monkeyIdIfTrue
               ThrowToMonkeyIfFalse = monkeyIdIfFalse
-              NumItemsInspected = 0 }
+              NumItemsInspected = bigint 0 }
 
         | _ -> failwith $"Invalid number of lines! %A{lines}"
 
@@ -145,10 +150,10 @@ module Monkey =
 
         let handleItem (monkeyMap: Map<MonkeyId, Monkey>) (item: Item) =
             let itemNewWorryLevel = monkey.Operation item
-            let itemNewWorryLevel = itemNewWorryLevel / 3
+            let itemNewWorryLevel = itemNewWorryLevel // / (bigint 3) // Uncomment for round 1
 
             let throwToMonkeyId =
-                if itemNewWorryLevel % monkey.TestDivisibleBy = 0 then
+                if itemNewWorryLevel % monkey.TestDivisibleBy = LanguagePrimitives.GenericZero then
                     monkey.ThrowToMonkeyIfTrue
                 else
                     monkey.ThrowToMonkeyIfFalse
@@ -156,7 +161,7 @@ module Monkey =
             itemNewWorryLevel
             |> throwItem monkeyMap throwToMonkeyId
 
-        let itemCount = monkey.Items |> List.length
+        let itemCount = monkey.Items |> List.length |> bigint
         let newMonkeyMap = monkey.Items |> List.fold handleItem monkeyMap
 
         // Monkey has inspected and thrown all its items
@@ -166,15 +171,6 @@ module Monkey =
                 NumItemsInspected = monkey.NumItemsInspected + itemCount }
 
         newMonkeyMap.Add(monkey.Id, newMonkey)
-
-//let chunked =
-//    fileLines
-//    |> List.filter (String.IsNullOrWhiteSpace >> not)
-//    |> List.chunkBySize 6
-//    |> List.mapi (fun i chunk -> i, chunk)
-//    |> List.iter (fun (i, chunk) ->
-//        chunk
-//        |> List.iter (fun line -> Console.WriteLine($"{i}: {line}")))
 
 let runRound (monkeyMap: Map<MonkeyId, Monkey>) =
     monkeyMap.Values
@@ -206,5 +202,20 @@ let top2 =
 
 let top2Product =
     top2
+    |> List.map (fun m -> m.NumItemsInspected)
+    |> List.product
+
+
+// Part 2
+let newMonkeyMap2 = monkeyMap |> runRoundXTimes 10_000
+
+let top2_2 =
+    newMonkeyMap2.Values
+    |> Seq.sortByDescending (fun monkey -> monkey.NumItemsInspected)
+    |> Seq.take 2
+    |> Seq.toList
+
+let top2Product2 =
+    top2_2
     |> List.map (fun m -> m.NumItemsInspected)
     |> List.product

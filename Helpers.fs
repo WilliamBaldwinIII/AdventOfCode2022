@@ -61,4 +61,6 @@ module String =
 
 
 module List =
-    let product = List.fold (fun total cur -> total * cur) 1
+    let inline product i =
+        i
+        |> List.fold (fun total cur -> total * cur) LanguagePrimitives.GenericOne
