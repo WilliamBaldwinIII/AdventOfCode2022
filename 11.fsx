@@ -41,6 +41,10 @@ type Monkey =
 
 
 module Monkey =
+    type private Operand =
+        | Number of int
+        | Old
+
     let private monkeyIdRegex = Regex(@"Monkey (\d+):", RegexOptions.Compiled)
 
     let private parseMonkeyId (line: string) =
@@ -65,12 +69,32 @@ module Monkey =
             | "/" -> (/)
             | "+" -> (+)
             | "-" -> (-)
-            | "%" -> (%)
             | other -> failwith $"{other} is an invalid operator!"
 
+        let parseOperand (str: String) =
+            let isNumber, number = Int32.TryParse str
+
+            if isNumber then
+                Number number
+            elif str = "old" then
+                Old
+            else
+                failwith $"{str} is not a valid operand!"
 
         match items with
-        | [| oneVal; operator; otherVal |] -> ()
-        | i -> failwith $"Invalid operator! %A{i}"
+        | [| beforeOperand; operator; afterOperand |] ->
+            let beforeOperand' = parseOperand beforeOperand
+            let afterOperand' = parseOperand afterOperand
+            let operator' = parseOperator operator
+
+            match beforeOperand', afterOperand' with
+            | Number before, Number after -> (fun _ -> operator' before after)
+            | Number before, Old -> (fun old -> operator' before old)
+            | Old, Number after -> (fun old -> operator' old after)
+            | Old, Old -> (fun old -> operator' old old)
+
+        | i -> failwith $"Invalid operation! %A{i}"
 
     let parse (lines: string list) = ()
+
+    let blah = (-) 1 2
