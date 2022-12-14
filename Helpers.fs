@@ -57,7 +57,7 @@ module String =
 
     /// Get the contents of the string after the first instance of `toFind` is found.
     let afterString (toFind: string) (s: string) =
-        s.Substring(s.IndexOf(toFind), toFind.Length)
+        s.Substring(s.IndexOf(toFind) + toFind.Length)
 
 
 module List =

@@ -7,24 +7,27 @@
 open Helpers
 open System
 
-fsi.ShowDeclarationValues <- false
-fsi.ShowProperties <- false
+//fsi.ShowDeclarationValues <- false
+//fsi.ShowProperties <- false
 
-let fileName = $"11"
+let fileName = $"11-ex"
 
-let fileLines = FileHelpers.readNumFile fileName
+let fileLines = FileHelpers.readNumFile' fileName
+
+type Item = int
+type MonkeyId = int
 
 type Monkey =
     { /// Monkey ID number in the list.
-      Id: int
+      Id: MonkeyId
 
       /// Lists your worry level for each item the monkey is currently holding in the order they will be inspected.
-      Items: int list
+      Items: Item list
 
       /// Shows how your worry level changes as that monkey inspects an item.
       /// (An operation like new = old * 5 means that your worry level after the monkey inspected
       /// the item is five times whatever your worry level was before inspection.)
-      Operation: int -> int
+      Operation: Item -> Item
 
       /// Shows how the monkey uses your worry level to decide where to throw an item next.
       TestDivisibleBy: int
@@ -32,12 +35,16 @@ type Monkey =
 
       /// Shows what happens with an item if the Test was true.
       /// Throw to the monkey with the given ID if true.
-      ThrowToMonkeyIfTrue: int
+      ThrowToMonkeyIfTrue: MonkeyId
 
 
       /// Shows what happens with an item if the Test was false.
       /// Throw to the monkey with the given ID if false.
-      ThrowToMonkeyIfFalse: int }
+      ThrowToMonkeyIfFalse: MonkeyId
+
+
+      /// How many items has this monkey examined in the given timeframe?
+      NumItemsInspected: int }
 
 
 module Monkey =
@@ -60,8 +67,6 @@ module Monkey =
         items |> List.ofArray |> List.map int
 
     let private parseOperation (line: string) =
-        let substr = line |> String.afterString "Operation: new = "
-        let items = substr |> String.split ","
 
         let parseOperator =
             function
@@ -81,6 +86,9 @@ module Monkey =
             else
                 failwith $"{str} is not a valid operand!"
 
+        let substr = line |> String.afterString "Operation: new = "
+        let items = substr |> String.split " "
+
         match items with
         | [| beforeOperand; operator; afterOperand |] ->
             let beforeOperand' = parseOperand beforeOperand
@@ -95,13 +103,13 @@ module Monkey =
 
         | i -> failwith $"Invalid operation! %A{i}"
 
-    let parseTestDivisible = String.afterString "Test: divisible by " >> int
+    let private parseTestDivisible = String.afterString "Test: divisible by " >> int
 
-    let parseTrueMonkey =
+    let private parseTrueMonkey =
         String.afterString "If true: throw to monkey "
         >> int
 
-    let parseFalseMonkey =
+    let private parseFalseMonkey =
         String.afterString "If false: throw to monkey "
         >> int
 
@@ -120,7 +128,76 @@ module Monkey =
               Operation = operation
               TestDivisibleBy = testDivisibleBy
               ThrowToMonkeyIfTrue = monkeyIdIfTrue
-              ThrowToMonkeyIfFalse = monkeyIdIfFalse }
+              ThrowToMonkeyIfFalse = monkeyIdIfFalse
+              NumItemsInspected = 0 }
 
         | _ -> failwith $"Invalid number of lines! %A{lines}"
 
+    let makeMove (monkeyMap: Map<MonkeyId, Monkey>) (monkey: Monkey) =
+        let throwItem (monkeyMap: Map<MonkeyId, Monkey>) (throwToMonkeyId: MonkeyId) (item: Item) =
+            let throwToMonkey = monkeyMap[throwToMonkeyId]
+            let oldItems = throwToMonkey.Items
+            let newItems = oldItems @ [ item ]
+
+            monkeyMap.Add(throwToMonkeyId, { throwToMonkey with Items = newItems })
+
+        let handleItem (monkeyMap: Map<MonkeyId, Monkey>) (item: Item) =
+            let itemNewWorryLevel = monkey.Operation item
+            let itemNewWorryLevel = itemNewWorryLevel / 3
+
+            let throwToMonkeyId =
+                if itemNewWorryLevel % monkey.TestDivisibleBy = 0 then
+                    monkey.ThrowToMonkeyIfTrue
+                else
+                    monkey.ThrowToMonkeyIfFalse
+
+            itemNewWorryLevel
+            |> throwItem monkeyMap throwToMonkeyId
+
+        let itemCount = monkey.Items |> List.length
+        let newMonkeyMap = monkey.Items |> List.fold handleItem monkeyMap
+
+        // Monkey has inspected and thrown all its items
+        let newMonkey =
+            { monkey with
+                Items = []
+                NumItemsInspected = monkey.NumItemsInspected + itemCount }
+
+        newMonkeyMap.Add(monkey.Id, newMonkey)
+
+//let chunked =
+//    fileLines
+//    |> List.filter (String.IsNullOrWhiteSpace >> not)
+//    |> List.chunkBySize 6
+//    |> List.mapi (fun i chunk -> i, chunk)
+//    |> List.iter (fun (i, chunk) ->
+//        chunk
+//        |> List.iter (fun line -> Console.WriteLine($"{i}: {line}")))
+
+let runRound (monkeyMap: Map<MonkeyId, Monkey>) =
+    monkeyMap.Values
+    |> Seq.fold Monkey.makeMove monkeyMap
+
+let runRoundXTimes x (monkeyMap: Map<MonkeyId, Monkey>) =
+    [ 1..x ]
+    |> List.fold (fun monkeyMap _ -> runRound monkeyMap) monkeyMap
+
+let monkeys =
+    fileLines
+    |> List.filter (String.IsNullOrWhiteSpace >> not)
+    |> List.chunkBySize 6
+    |> List.map Monkey.parse
+
+let monkeyMap =
+    monkeys
+    |> List.map (fun m -> m.Id, m)
+    |> Map.ofList
+
+
+let newMonkeyMap = monkeyMap |> runRoundXTimes 20
+
+let top2 =
+    newMonkeyMap.Values
+    |> Seq.sortByDescending (fun monkey -> monkey.NumItemsInspected)
+    |> Seq.take 2
+    |> Seq.toList
