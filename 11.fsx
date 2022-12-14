@@ -10,7 +10,7 @@ open System
 //fsi.ShowDeclarationValues <- false
 //fsi.ShowProperties <- false
 
-let fileName = $"11-ex"
+let fileName = $"11"
 
 let fileLines = FileHelpers.readNumFile' fileName
 
@@ -133,7 +133,9 @@ module Monkey =
 
         | _ -> failwith $"Invalid number of lines! %A{lines}"
 
-    let makeMove (monkeyMap: Map<MonkeyId, Monkey>) (monkey: Monkey) =
+    let makeMove (monkeyMap: Map<MonkeyId, Monkey>) (monkeyId: MonkeyId) =
+        let monkey: Monkey = monkeyMap[monkeyId]
+
         let throwItem (monkeyMap: Map<MonkeyId, Monkey>) (throwToMonkeyId: MonkeyId) (item: Item) =
             let throwToMonkey = monkeyMap[throwToMonkeyId]
             let oldItems = throwToMonkey.Items
@@ -176,6 +178,7 @@ module Monkey =
 
 let runRound (monkeyMap: Map<MonkeyId, Monkey>) =
     monkeyMap.Values
+    |> Seq.map (fun monkey -> monkey.Id)
     |> Seq.fold Monkey.makeMove monkeyMap
 
 let runRoundXTimes x (monkeyMap: Map<MonkeyId, Monkey>) =
@@ -193,7 +196,6 @@ let monkeyMap =
     |> List.map (fun m -> m.Id, m)
     |> Map.ofList
 
-
 let newMonkeyMap = monkeyMap |> runRoundXTimes 20
 
 let top2 =
@@ -201,3 +203,8 @@ let top2 =
     |> Seq.sortByDescending (fun monkey -> monkey.NumItemsInspected)
     |> Seq.take 2
     |> Seq.toList
+
+let top2Product =
+    top2
+    |> List.map (fun m -> m.NumItemsInspected)
+    |> List.product
