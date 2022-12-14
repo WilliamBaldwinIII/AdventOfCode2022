@@ -57,7 +57,7 @@ module Monkey =
         let substr = line |> String.afterString "Starting items: "
         let items = substr |> String.split ","
 
-        items |> List.ofArray
+        items |> List.ofArray |> List.map int
 
     let private parseOperation (line: string) =
         let substr = line |> String.afterString "Operation: new = "
@@ -95,6 +95,32 @@ module Monkey =
 
         | i -> failwith $"Invalid operation! %A{i}"
 
-    let parse (lines: string list) = ()
+    let parseTestDivisible = String.afterString "Test: divisible by " >> int
 
-    let blah = (-) 1 2
+    let parseTrueMonkey =
+        String.afterString "If true: throw to monkey "
+        >> int
+
+    let parseFalseMonkey =
+        String.afterString "If false: throw to monkey "
+        >> int
+
+    let parse (lines: string list) =
+        match lines with
+        | [ idLine; itemsLines; operationLine; testDivisibleLine; ifTrueLine; ifFalseLine ] ->
+            let monkeyId = parseMonkeyId idLine
+            let startingItems = parseStartItems itemsLines
+            let operation = parseOperation operationLine
+            let testDivisibleBy = parseTestDivisible testDivisibleLine
+            let monkeyIdIfTrue = parseTrueMonkey ifTrueLine
+            let monkeyIdIfFalse = parseFalseMonkey ifFalseLine
+
+            { Id = monkeyId
+              Items = startingItems
+              Operation = operation
+              TestDivisibleBy = testDivisibleBy
+              ThrowToMonkeyIfTrue = monkeyIdIfTrue
+              ThrowToMonkeyIfFalse = monkeyIdIfFalse }
+
+        | _ -> failwith $"Invalid number of lines! %A{lines}"
+
